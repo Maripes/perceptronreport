@@ -191,10 +191,10 @@ if archivo_L and archivo_R:
 
     styled_df = (
         df_filtrado.style
-        .applymap(color_t_test, subset=["T-Test"])
-        .applymap(color_f_test, subset=["F-Test"])
-        .applymap(color_corr, subset=["Corr. Coef."])
-        .applymap(color_offset, subset=["Offset"])
+        .apply(lambda col: col.map(color_t_test) if col.name == "T-Test" else [""]*len(col), axis=0)
+        .apply(lambda col: col.map(color_f_test) if col.name == "F-Test" else [""]*len(col), axis=0)
+        .apply(lambda col: col.map(color_corr) if col.name == "Corr. Coef." else [""]*len(col), axis=0)
+        .apply(lambda col: col.map(color_offset) if col.name == "Offset" else [""]*len(col), axis=0)
     )
 
     st.dataframe(styled_df, use_container_width=True)
