@@ -167,9 +167,9 @@ if archivo_L and archivo_R:
     # Limpiar nombres de columnas (quita espacios invisibles)
     df_filtrado.columns = df_filtrado.columns.str.strip()
 
-    # Limpiar espacios dentro de las celdas (blindaje extra)
-    df_filtrado = df_filtrado.applymap(
-        lambda x: x.strip() if isinstance(x, str) else x
+
+    df_filtrado = df_filtrado.apply(
+    lambda col: col.map(lambda x: x.strip() if isinstance(x, str) else x)
     )
     # =========================
     # ORDEN TIPO EXCEL
