@@ -8,8 +8,8 @@ from xlsxwriter.utility import xl_col_to_name
 # =========================
 # CONFIG
 # =========================
-st.set_page_config(page_title="Comparación cmm", layout="wide")
-st.title("Comparación Vs CMM")
+st.set_page_config(page_title="Report Perceptron", layout="wide")
+st.title("Report Perceptron")
 
 # =========================
 # CARGA DE ARCHIVOS
