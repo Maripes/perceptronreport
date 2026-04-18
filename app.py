@@ -284,10 +284,13 @@ if archivo_L and archivo_R:
         # AUTO AJUSTAR COLUMNAS
         # =========================
         for i, col in enumerate(df_filtrado.columns):
-            max_len = max(
-                df_filtrado[col].astype(str).map(len).max(),
-                len(col)
-            ) + 2
+            try:
+                max_len = max(
+                    df_filtrado[col].astype(str).apply(lambda x: len(str(x))).max(),
+                    len(col)
+                ) + 2
+            except:
+                max_len = len(col) + 2
             worksheet.set_column(i, i, max_len)
 
         # =========================
